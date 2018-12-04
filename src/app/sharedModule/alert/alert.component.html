@@ -1,0 +1,4 @@
+  <div class="notification is-danger" *ngIf="message" style="margin-top:1.5rem">
+      <button class="delete" (click)="message = null"></button>
+      {{message.text}}
+    </div>

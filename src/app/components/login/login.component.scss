@@ -1,0 +1,57 @@
+.box {
+    border-radius: 0px;
+    margin: 0px;
+    padding-top: 2rem;
+    padding-right: 0rem;
+    padding-bottom: 0px;
+    text-align: center;
+    padding-left: 0rem;
+}
+
+.circleBackground{
+    height: 30rem;
+    width: 30rem;
+    z-index: -1;
+    background-color: #209cee;
+    border-radius: 15rem;
+    position: absolute;
+    margin-top: 6rem;
+    margin-left: 7rem;
+}
+
+ul {
+    list-style: none;
+    width: 100%;
+    font-size: 0;
+}
+
+li {
+    display: inline-block;
+    width: 25%;
+    height: 5px;
+}
+
+li:nth-child(1) {
+    background: hsl(204, 86%, 53%);
+}
+
+li:nth-child(2) {
+    background: hsl(348, 100%, 61%);
+}
+
+li:nth-child(3) {
+    background: hsl(48, 100%, 67%);
+}
+
+li:nth-child(4) {
+    background: hsl(171, 100%, 41%);
+}
+
+
+.button.is-primary[disabled] {
+    color: grey;
+}
+
+.button[disabled] {
+    opacity: 1 !important;
+}

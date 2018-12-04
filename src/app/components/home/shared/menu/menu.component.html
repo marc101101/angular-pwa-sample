@@ -1,0 +1,57 @@
+<i class="fa fa-times menu-burger" aria-hidden="true" (click)="closeMenu()"></i>
+
+<div class="circleBackground"></div>
+<div class="userProfil" (click)="routing('home/profil')">
+    <span class="icon">
+        <i class="fa fa-user"></i>
+    </span>
+    Profil
+</div>
+
+<div class="menuPoint" style="margin-top: 4rem" (click)="routing('home/kurs-uebersicht/me')">
+    <span class="icon">
+        <i class="fa fa-star"></i>
+    </span>
+    Meine Kurse
+</div>
+
+<div class="menuPoint" (click)="routing('home/kategorien')">
+    <span class="icon">
+        <i class="fa fa-tasks"></i>
+    </span>
+    Kategorien
+</div>
+
+<div class="menuPoint" (click)="routing('home/kurs-uebersicht/highlights')">
+    <span class="icon">
+        <i class="fa fa-calendar"></i>
+    </span>
+    Highlights
+</div>
+
+<div class="menuPoint" (click)="routing('home/kurs-uebersicht/lastminute')">
+    <span class="icon">
+        <i class="fa fa-fire"></i>
+    </span>
+    Last Minute
+</div>
+
+<div class="menuPoint" (click)="routing('home/kontakt')">
+    <span class="icon">
+        <i class="fa fa-envelope"></i>
+    </span>
+    Kontakt
+</div>
+
+<div class="menuPoint imprint">
+    <a class="color-black" href="https://www.vhslq.de/index.php?&session_name=bujmsuooupg5o8mhjij463tv34&sel_submodul_id=200705161039561630420394&formular=0&startnav=200705161039561630420394&reset=1&view_main=1">
+        Impressum
+    </a><br>
+    <a class="color-black" href="https://www.vhslq.de/index.php?&session_name=bujmsuooupg5o8mhjij463tv34&sel_submodul_id=201805241653121080370739&formular=0&startnav=201805241653121080370739&reset=1&view_main=1">
+        Datenschutz
+    </a>
+</div>
+
+<div class="menuPoint color-blue imprint" (click)="signOut()">
+    Ausloggen
+</div>

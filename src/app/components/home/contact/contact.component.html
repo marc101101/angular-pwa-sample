@@ -1,0 +1,39 @@
+<div class="container fullscreenBackground">
+  <div class="circleBackground"></div>
+  <div class="columns is-mobile">
+    <div class="column is-12 headline-position">
+      <div class="headline-style">
+        {{headerText}}
+      </div>
+    </div>
+    <div class="columns is-mobile">
+    </div>
+  </div>
+
+  <div class="padding-1">
+    <textarea class="textarea" placeholder="Wir freuen uns über Ihr Feedback." [(ngModel)]="contactMessage.text" ></textarea>
+  </div>
+
+  <div class="colum is-12" style="text-align: center; font-size: 2rem;">
+    <i *ngIf="contactMessage.bewertung<1" class="fa fa-star-o" aria-hidden="true" (click)="contactMessage.bewertung = 1"></i>
+    <i *ngIf="contactMessage.bewertung>=1" class="fa fa-star" aria-hidden="true" (click)="contactMessage.bewertung = 1"></i>
+
+    <i *ngIf="contactMessage.bewertung<2" class="fa fa-star-o" aria-hidden="true" (click)="contactMessage.bewertung = 2"></i>
+    <i *ngIf="contactMessage.bewertung>=2" class="fa fa-star" aria-hidden="true" (click)="contactMessage.bewertung = 2"></i>
+
+    <i *ngIf="contactMessage.bewertung<3" class="fa fa-star-o" aria-hidden="true" (click)="contactMessage.bewertung = 3"></i>
+    <i *ngIf="contactMessage.bewertung>=3" class="fa fa-star" aria-hidden="true" (click)="contactMessage.bewertung = 3"></i>
+
+    <i *ngIf="contactMessage.bewertung<4" class="fa fa-star-o" aria-hidden="true" (click)="contactMessage.bewertung = 4"></i>
+    <i *ngIf="contactMessage.bewertung>=4" class="fa fa-star" aria-hidden="true" (click)="contactMessage.bewertung = 4"></i>
+
+    <i *ngIf="contactMessage.bewertung<5" class="fa fa-star-o" aria-hidden="true" (click)="contactMessage.bewertung = 5"></i>
+    <i *ngIf="contactMessage.bewertung>=5" class="fa fa-star" aria-hidden="true" (click)="contactMessage.bewertung = 5"></i>
+  </div>
+  
+  <div class="column is-12 padding-button">
+    <button #send class="button is-primary is-medium is-fullwidth margin-15" [disabled]="contactMessage.text == ''" (click)="submit()">
+      <div>{{button_text}}</div>            
+    </button>
+  </div>
+</div>

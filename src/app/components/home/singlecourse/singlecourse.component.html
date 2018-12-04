@@ -1,0 +1,90 @@
+<div class="container fullscreenBackground">
+  <div class="circleBackground" #backgroundElement></div>
+  <div class="columns is-mobile">
+    <div class="column is-12 headline-position" style="padding-right: 3.5rem;" *ngIf="dataIsAvailable">
+      <div class="headline-style">
+        {{singleCourse.KURS_NAME}}
+      </div>
+    </div>
+  </div>
+
+  <section class="single-course-position" *ngIf="dataIsAvailable">
+    <div class="card single-course-card">
+      <div>
+        <i class="fa fa-clock-o info-icon color-black"></i>
+        <p>Beginn: {{singleCourse.KURS_BEGINN_UHRZEIT}} Uhr</p>
+      </div>
+      <div>
+        <i class="fa fa-map-marker info-icon color-black"></i>
+        <p>Ort: {{singleCourse.location.ORT_STRASSE}}, {{singleCourse.location.ORT_PLZ}}
+          {{singleCourse.location.ORT_ORTSNAME}}</p>
+      </div>
+      <div>
+        <i class="fa fa-user info-icon color-black" *ngIf="singleCourse.teacher"></i>
+        <p>Referent: {{singleCourse.teacher.TEIL_VORNAME}} {{singleCourse.teacher.TEIL_NACHNAME}}</p>
+      </div>
+    </div>
+    <a class="button is-fullwidth is-primary nav-button" [attr.href]="'http://maps.google.com/?q= ' 
+    + singleCourse.location.ORT_STRASSE + ', '
+    + singleCourse.location.ORT_ORTSNAME + ', '
+    + singleCourse.location.ORT_PLZ">
+      <i class="fa fa-location-arrow" aria-hidden="true"></i>
+    </a>
+    <a class="button is-fullwidth is-warning nav-button" [routerLink]="['/home/kontakt/' + singleCourse.KURS_ID]">
+      <i class="fa fa-star" aria-hidden="true"></i>
+    </a>
+  </section>
+
+  <div class="column is-12 apply-button" *ngIf="showButton">
+    <a #button class="button is-fullwidth is-primary" (click)="apply()" *ngIf="!alreadyApplied">{{button_text}}</a>
+    <a #button class="button is-fullwidth is-danger" (click)="signOff()" *ngIf="alreadyApplied">{{button_text}}</a>
+  </div>
+
+  <div class="column alert-style">
+    <alert></alert>
+  </div>
+
+  <section class="info-style" *ngIf="dataIsAvailable && moreInfo">
+    <div class="card padding-1" (click)="moreInfo = false">
+      <div class="sub-headline">
+        Weniger Informationen
+      </div>
+      <div class="padding-05">
+        <i class="fa fa-chevron-up right" aria-hidden="true"></i>
+      </div>
+      <div class="column is-12 info-padding">
+        <div>
+          <p *ngIf="singleCourse.KURS_ID">Kurs ID: {{singleCourse.KURS_ID}}</p>
+          <p *ngIf="singleCourse.KURS_TEIL_MAX">Teilnehmer: max. {{singleCourse.KURS_TEIL_MAX}} / min.
+            {{singleCourse.KURS_TEIL_MIN}}</p>
+          <p *ngIf="singleCourse.KURS_ANZAHLTERMINE">Termine: {{singleCourse.KURS_ANZAHLTERMINE}}</p>
+          <p *ngIf="singleCourse.KURS_MITZUBRINGEN">Mitzubringen: {{singleCourse.KURS_MITZUBRINGEN}}</p>
+          <p *ngIf="singleCourse.KURS_PREIS">Kursgebühr: {{singleCourse.KURS_PREIS}} €</p>
+          <p *ngIf="singleCourse.KURS_ANMFRIST">Anmeldefrist: {{singleCourse.KURS_ANMFRIST}}</p>
+          <p *ngIf="singleCourse.KURS_ENDE_UHRZEIT">Ende: {{singleCourse.KURS_ENDE_UHRZEIT}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="less-info-padding" *ngIf="dataIsAvailable && !moreInfo">
+    <div class="card less-info-card card-height-4" (click)="moreInfo = true">
+      <div class="sub-headline">
+        Mehr Informationen
+      </div>
+      <div class="padding-05">
+        <i class="fa fa-chevron-down right" aria-hidden="true"></i>
+      </div>
+    </div>
+  </section>
+
+  <section class="margin-bottom-2" *ngIf="dataIsAvailable">
+    <div class="card padding-1">
+      <div class="subheadline">
+        Kursinhalt
+      </div>
+      {{singleCourse.KURS_BESCHREIBUNG}}
+    </div>
+  </section>
+
+</div>

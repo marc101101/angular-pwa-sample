@@ -1,0 +1,50 @@
+<div class="container fullscreenBackground">
+  <div class="circleBackground"></div>
+  <div class="columns is-mobile">
+    <div class="column is-12" style="z-index: 0; padding: 2rem; padding-left: 5rem;">
+      <div class="headline-style" *ngIf="dataIsAvailable">
+        {{user.TEIL_VORNAME}} {{user.TEIL_NACHNAME}}
+      </div>
+    </div>
+  </div>
+
+  <div class="column alert-style">
+    <alert></alert>
+  </div>
+
+  <section class="login" style="padding: 1rem; padding-top: 0rem;">
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm" (change)="resetButton()">
+      <input *ngIf="dataIsAvailable" class="input is-medium" type="email" placeholder="Email" id="mail" required
+        [(ngModel)]="user.TEIL_EMAIL" name="mail" #mail="ngModel">
+      <br>
+      <br>
+      <input *ngIf="dataIsAvailable" class="input is-medium" type="text" placeholder="Adresse" id="address" [(ngModel)]="user.TEIL_ORT"
+        name="address" #address="ngModel">
+      <br>
+      <br>
+      <input *ngIf="dataIsAvailable" class="input is-medium" type="text" placeholder="BLZ" id="blz" [(ngModel)]="user.TEIL_BLZ"
+        name="blz" #blz="ngModel" maxlength="8">
+      <br>
+      <br>
+      <input *ngIf="dataIsAvailable" class="input is-medium" type="text" placeholder="IBAN" id="iban" [(ngModel)]="user.TEIL_IBAN"
+        name="iban" #iban="ngModel" maxlength="22">
+      <br>
+      <br>
+      <div class="columns is-mobile">
+        <div class="column is-2">
+          <div style="margin-top: 0.65rem;" (click)="backClicked()">
+            <span class="icon" style="color: #00d1b2; padding: 1.5rem; padding-left: 1rem">
+              <i class="fa fa-chevron-left"></i>
+            </span>
+          </div>
+        </div>
+        <div class="column is-10" style="padding: 0rem;">
+          <button #save class="button is-primary is-medium is-fullwidth" style="margin-top:1.5rem" [disabled]="!heroForm.form.valid"
+            type="submit">
+            <div>{{button_text}}</div>
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>

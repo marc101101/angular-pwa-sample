@@ -1,0 +1,30 @@
+<div class="container fullscreenBackground">
+  <div class="circleBackground"></div>   
+  <div class="columns is-mobile">
+    <div class="column is-12 headline-position">
+      <div class="headline-style">
+        Kurs Kategorien
+      </div>
+    </div>
+  </div>
+
+  <div class="column alert-position">
+    <alert></alert>
+  </div>
+
+  <section class="padding-1" *ngIf="dataIsAvailable">
+    <div class="card" *ngFor="let category of categories; let i=index" (click)="routeToCourse(category.RUB_ID, colorArray[i], category.RUB_NAME)">
+      <div class="color-marker" [ngClass]="colorArray[i]">
+      </div>
+      <div class="card-content">
+        <p class="title">
+          {{category.RUB_NAME}}
+        </p>
+        <p class="subtitle">
+          {{category.RUB_TEXT}}
+        </p>
+      </div>
+    </div>
+  </section>
+  
+</div>

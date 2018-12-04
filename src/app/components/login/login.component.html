@@ -1,0 +1,33 @@
+<div class="container fullscreenBackground">
+  <div class="circleBackground"></div>
+  <div class="columns is-mobile">
+    <div class="column is-6 box colorMargin">
+      <div style="margin-bottom: 1rem;">
+        <b>Einloggen</b>
+      </div>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="column is-6 box" routerLink="/registration">
+      <div style="margin-bottom: 1rem;">
+        Registieren
+      </div>
+    </div>
+  </div>
+  <section class="login" style="padding: 1rem; padding-top: 3rem">
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+      <input class="input is-medium" type="email" placeholder="Email" id="mail" required [(ngModel)]="model.mail" name="mail"
+        #mail="ngModel">
+      <br>
+      <br>
+      <input class="input is-medium" type="password" placeholder="Passwort" id="password" required [(ngModel)]="model.password"
+        name="password" #mail="ngModel">
+       <alert></alert> 
+      <button class="button is-primary is-medium is-fullwidth" style="margin-top:1.5rem" [disabled]="!heroForm.form.valid" type="submit">Einloggen</button>
+    </form>
+  </section>
+</div>

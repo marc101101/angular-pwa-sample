@@ -1,0 +1,37 @@
+<div class="container fullscreenBackground">
+  <div class="circleBackground" #backgroundElement></div>   
+  <div class="columns is-mobile">
+    <div class="column is-12 headline-position">
+      <div class="headline-style">
+        {{headerText}}
+      </div>
+    </div>
+  </div>
+
+  <div class="column alert-style">
+    <alert></alert>
+  </div>
+
+  <section class="subheadline-style" *ngIf="dataIsAvailable && courses.length == 0">
+    Keine Kurs gefunden.
+  </section>
+
+  <section class="padding-1" *ngIf="dataIsAvailable">
+    <div class="card" *ngFor="let course of courses; let i=index" [(routerLink)]="'/home/kurs/' + course.KURS_ID">
+      <div class="color-marker">
+      </div>
+      <div class="card-content">
+        <p class="title">
+          {{course.KURS_NAME}}
+        </p>
+        <p class="subtitle">
+          {{course.KURS_SUBNAME}}
+        </p>
+        <p class="subtitle applicationDate" *ngIf="course.ANM_DATUM">
+          Anmeldung | {{course.ANM_DATUM | date:'dd.MM.yyyy'}}
+        </p>
+      </div>
+    </div>
+  </section>
+  
+</div>

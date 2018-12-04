@@ -1,0 +1,23 @@
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+// Import the rest of Bulma
+@import "assets/css/bulma.min.css";
+
+.device-wrapper {
+    height: 920px;
+    padding: 6.9rem;
+    padding-left: 2.5rem;
+    background-image: url('../assets/img/iphone_portrait_black.png');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
+    z-index: -1;
+}
+
+.device{
+    width: 380px;
+    height: 607px;
+    position: absolute;
+    overflow:hidden
+}

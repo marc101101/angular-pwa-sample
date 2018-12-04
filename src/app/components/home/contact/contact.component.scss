@@ -1,0 +1,21 @@
+.textarea:not([rows]) {
+    max-height: 605px;
+    min-height: 20rem;
+}
+
+.fa-star-o {
+    padding: 0.5rem;
+}
+
+.fa-star {
+    padding: 0.5rem;
+}
+
+.padding-button{
+    padding: 1rem; 
+    padding-top:0rem;
+}
+
+.margin-15{
+    margin-top:1.5rem;
+}

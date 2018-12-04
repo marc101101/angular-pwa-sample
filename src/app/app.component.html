@@ -1,0 +1,36 @@
+<div *ngIf="mobile">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="container" *ngIf="!mobile" style="padding: 5%; padding-top: 1%; padding-bottom: 1%;">
+  <div class="columns is-desktop">
+    <div class="column" style="margin-top: auto; margin-bottom: auto">
+      <h1 class="title is-1">VHS Lanquaid
+        <br>Mobile App*</h1>
+      Made with <b style="color:hsl(348, 100%, 61%)"> ❤</b> in Regensburg
+
+      <div>
+        <div style="padding-top:1rem">
+          <a class="button is-primary" href="https://www.vhslq.de/" style="width: 13rem;">VHS Website</a>
+        </div>
+        <div style="padding-top:1rem">
+          <a class="button is-info" href="https://github.com/marc101101/PS_SS18_vhsLangquaid" style="width: 17rem;">Github Repository</a>
+        </div>
+        <div style="padding-top:1rem">
+            <a class="button is-warning" href="https://www.uni-regensburg.de/sprache-literatur-kultur/medieninformatik/medieninformatik/index.html" style="width: 21rem;">Lehrstuhl Medieninfo. Uni. Regensburg</a>
+          </div>
+      </div>
+      <p style="font-size: 0.8rem; padding: 5rem; padding-left: 0rem;">* Dies ist ein Demo für die Desktop Ansicht, die Anwendung ist aber hinsichtlich einer mobilen Nutzung optimiert.</p>
+    </div>
+
+    <div class="column">
+      <div class="device-wrapper" [style.height.px]="calcHeight">
+        <div class="device" [style.height.px]="frameHeight" [style.width.px]="frameWidth">
+          <div class="screen">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

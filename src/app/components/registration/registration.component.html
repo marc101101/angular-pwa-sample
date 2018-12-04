@@ -1,0 +1,175 @@
+<div class="container fullscreenBackground" style="overflow: hidden;">
+  <div class="circleBackground" *ngIf="!login"></div>
+  <div class="circleBackground login" *ngIf="login"></div>
+  <div class="columns is-mobile">
+    <div class="column is-6 box" [routerLink]="['/login']">
+      Einloggen
+    </div>
+    <div class="column is-6 box" style="padding-left: 0rem;">
+      <div style="margin-bottom: 1rem;">
+        <b>Registieren</b>
+      </div>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+  <section class="registrieren-0" *ngIf="state == 0" style="padding: 1rem; padding-top: 2rem">
+    <div class="select is-medium is-fullwidth">
+      <select [(ngModel)]="user.teil_anrede">
+        <option value="0">Herr</option>
+        <option value="1">Frau</option>
+        <option value="2">Sonstiges</option>
+      </select>
+    </div>
+    <input class="input is-medium" type="text" placeholder="Vorname" style="margin-top: 1.5rem" [(ngModel)]="user.teil_vorname">
+    <input class="input is-medium" type="text" placeholder="Nachname" style="margin-top: 1.5rem" [(ngModel)]="user.teil_nachname">
+
+    <div class="columns is-mobile padding-1">
+      <div class="column is-12" style="padding: 0rem;">
+        <button class="button is-info is-medium is-fullwidth" style="margin-top:1.5rem" (click)="state = state + 1">
+          <div>Weiter</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="registrieren-1" *ngIf="state == 1" style="padding: 1rem; padding-top: 2rem">
+    <input class="input is-medium" type="text" placeholder="Straße, Hausnummer" [(ngModel)]="user.teil_strasse1">
+    <input class="input is-medium" type="text" placeholder="PLZ" style="margin-top: 1.5rem" [(ngModel)]="user.teil_plz">
+    <input class="input is-medium" type="text" placeholder="Wohnort" style="margin-top: 1.5rem" [(ngModel)]="user.teil_ort">
+    <div class="columns is-mobile padding-1">
+      <div class="column is-2">
+        <div style="margin-top: 0.65rem;" (click)="state = state - 1">
+          <span class="icon" style="color: #209cee; padding: 1.5rem; padding-left: 1rem">
+            <i class="fa fa-chevron-left"></i>
+          </span>
+        </div>
+      </div>
+      <div class="column is-10" style="padding: 0rem;">
+        <button class="button is-info is-medium is-fullwidth" style="margin-top:1.5rem" (click)="state = state + 1">
+          <div>Weiter</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="registrieren-2" *ngIf="state == 2" style="padding: 1rem; padding-top: 0rem">
+    <div class="column is-12" style="font-size: 1.15rem; padding-bottom: 0.5rem; padding-left: 0rem;">
+      Geburtsdatum
+    </div>
+    <div class="columns is-mobile">
+      <div class="column is-4">
+        <div class="select is-medium is-fullwidth">
+          <select [(ngModel)]="birthday.day">
+            <option value="Tag" disabled selected>Tag</option>
+            <option *ngFor="let day of generate(1,31)" [ngValue]="day">{{day}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="select is-medium is-fullwidth">
+          <select [(ngModel)]="birthday.month">
+            <option value="Monat" disabled selected>Monat</option>
+            <option *ngFor="let month of generate(1,12)" [ngValue]="month">{{month}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="column is-4">
+        <div class="select is-medium is-fullwidth">
+          <select [(ngModel)]="birthday.year">
+            <option value="Jahr" disabled selected>Jahr</option>
+            <option *ngFor="let year of generate(1930,2018)" [ngValue]="year">{{year}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <input class="input is-medium" type="mail" placeholder="Email" [(ngModel)]="user.teil_email">
+    <input style="margin-top:0.5rem" class="input is-medium" type="password" placeholder="Passwort" [(ngModel)]="user.teil_passwort">
+    <div class="columns is-mobile padding-1">
+      <div class="column is-2">
+        <div style="margin-top: 0.65rem;" (click)="state = state - 1">
+          <span class="icon" style="color: #209cee; padding: 1.5rem; padding-left: 1rem">
+            <i class="fa fa-chevron-left"></i>
+          </span>
+        </div>
+      </div>
+      <div class="column is-10" style="padding: 0rem;">
+        <button class="button is-info is-medium is-fullwidth" style="margin-top:1.5rem" (click)="state = state + 1">
+          <div>Weiter</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="registrieren-2" *ngIf="state == 3" style="padding: 1rem; padding-top: 2rem">
+    <input class="input is-medium" type="text" placeholder="BLZ" maxlength="8" style="margin-top: 1.5rem" [(ngModel)]="user.teil_blz">
+    <input class="input is-medium" type="text" placeholder="IBAN" maxlength="22" style="margin-top: 1.5rem" [(ngModel)]="user.teil_iban">
+    <div class="columns is-mobile padding-1">
+      <div class="column is-2">
+        <div style="margin-top: 0.65rem;" (click)="state = state - 1">
+          <span class="icon" style="color: #209cee; padding: 1.5rem; padding-left: 1rem">
+            <i class="fa fa-chevron-left"></i>
+          </span>
+        </div>
+      </div>
+      <div class="column is-10" style="padding: 0rem;">
+        <button class="button is-info is-medium is-fullwidth" style="margin-top:1.5rem" (click)="state = state + 1">
+          <div>Weiter</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="registrieren-3" *ngIf="state == 4" style="padding: 1rem; padding-top: 2rem">
+
+    <div class="columns is-mobile" style="padding: 2rem; padding-bottom: 0rem; padding-left: 1rem;">
+      <label class="checkContainer">Hiermit akzeptiere ich die Allgemeinen Geschäftsbedingungen
+        <a href="#">AGBs</a>
+        <input type="checkbox" [(ngModel)]="agb_state">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+
+    <div class="columns is-mobile" style="padding: 2rem; padding-top: 1rem; padding-bottom: 0rem; padding-left: 1rem;">
+      <label class="checkContainer">Hiermit akzeptiere ich die Dateschutzerklärung
+        <a href="#">DSE</a>
+        <input type="checkbox" [(ngModel)]="dse_state">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+
+    <div class="columns is-mobile" style="padding:1rem;  padding-top: 0rem">
+      <div class="column is-2">
+        <div style="margin-top: 0.65rem;" (click)="state = state - 1; login = false">
+          <span class="icon" style="color: #209cee; padding: 1.5rem; padding-left: 1rem;">
+            <i class="fa fa-chevron-left"></i>
+          </span>
+        </div>
+      </div>
+      <div class="column is-10" style="padding: 0rem;">
+        <button *ngIf="!login" class="button is-info is-medium is-fullwidth" style="margin-top:1.5rem" (click)="onSubmit()">
+          <div>Registieren</div>
+        </button>
+        <button *ngIf="login" class="button is-primary is-medium is-fullwidth" style="margin-top:1.5rem" [routerLink]="['/login']">
+          <div>Einloggen</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="has-text-centered" style="padding: 2rem">
+    <span class="dot" [ngClass]="{'active': state==0}" (click)="state = 0"></span>
+    <span class="dot" [ngClass]="{'active': state==1}" (click)="state = 1"></span>
+    <span class="dot" [ngClass]="{'active': state==2}" (click)="state = 2"></span>
+    <span class="dot" [ngClass]="{'active': state==3}" (click)="state = 3"></span>
+    <span class="dot" [ngClass]="{'active': state==4}" (click)="state = 4"></span>
+  </div>
+
+  <div style="padding: 1rem">
+    <alert></alert>
+  </div>
+</div>
