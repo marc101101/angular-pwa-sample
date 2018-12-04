@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" style="height: 100%;">
+
+<head>
+    <meta charset="utf-8">
+    <title>Audi Dev</title>
+    <base href="/">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="theme-color" content="#CC0033">
+    <link rel="manifest" href="manifest.json">
+
+    <style>
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 999;
+        }
+
+        .loader-overlay .audiloader {
+            position: absolute;
+            width: 82px;
+            height: 40px;
+            top: 50%;
+            left: 46%;
+            transform: translate(-50%, -50%);
+        }
+
+        .loader-overlay .audiloader .circle {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #B0B6B8;
+            border-radius: 50%;
+            animation: spin 600ms infinite linear;
+            float: left;
+            position: absolute;
+            top: 0;
+        }
+
+        .loader-overlay .audiloader .circle.first {
+            left: 0;
+            border-top-color: #CC0033;
+        }
+
+        .loader-overlay .audiloader .circle.second {
+            left: 25px;
+            border-right-color: #CC0033;
+        }
+
+        .loader-overlay .audiloader .circle.third {
+            left: 50px;
+            border-bottom-color: #CC0033;
+        }
+
+        .loader-overlay .audiloader .circle.fourth {
+            left: 75px;
+            border-left-color: #CC0033;
+        }
+    </style>
+</head>
+
+<body class="main" style="overflow: hidden; height: 100%;">
+        <!--Source: https://codepen.io/ateshai/pen/rOmyNb-->
+        <div class="loader-overlay">  
+            <div class="audiloader">
+              <i class="circle first"></i>
+              <i class="circle second"></i>
+              <i class="circle third"></i>
+              <i class="circle fourth"></i>
+            </div>
+          </div>
+          <h3 style="color: black; margin: 2rem;">
+                You're offline right now - check your network connection!
+            </h3>
+    <noscript>
+        <h3 style="color: black; margin: 2rem;">
+            Sorry, but the app is not available without Javascript.
+        </h3>
+    </noscript>
+</body>
+
+</html>
